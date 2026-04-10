@@ -22,26 +22,5 @@
     <div id="game-frame-container">
         <iframe id="game-player" src=""></iframe>
     </div>
-
-    <script>
-        // 1. Grab the URL from the browser bar
-        const params = new URLSearchParams(window.location.search);
-        const gameUrl = params.get('gameUrl');
-        const gameTitle = params.get('title');
-
-        // 2. Your logic to load the game
-        if (gameUrl) {
-            // Set the iframe to the game URL
-            document.getElementById('game-player').src = decodeURIComponent(gameUrl);
-            
-            // Optional: Set the title dynamically too
-            if (gameTitle) {
-                document.getElementById('game-title').innerText = decodeURIComponent(gameTitle);
-            }
-        } else {
-            // If someone lands here without a game, send them back home
-            window.location.href = 'index.html';
-        }
-    </script>
 </body>
 </html>
