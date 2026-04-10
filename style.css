@@ -1,0 +1,88 @@
+/* General Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #20d3ac; /* The signature mint/teal background */
+    padding: 20px;
+}
+
+/* Header Styling */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.logo {
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+}
+
+.search-bar {
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: none;
+    width: 300px;
+}
+
+/* The Grid Layout */
+.game-grid {
+    display: grid;
+    /* This creates a flexible grid with 120px base tracks */
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    grid-auto-rows: 120px;
+    grid-auto-flow: dense; /* Fills in gaps automatically */
+    gap: 12px;
+}
+
+/* Individual Card Styling */
+.game-card {
+    background-color: #eee;
+    border-radius: 15px;
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    position: relative;
+}
+
+.game-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+    z-index: 2;
+}
+
+/* Sizing Classes */
+.game-card.large {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+.game-card.tall {
+    grid-row: span 2;
+}
+
+.game-card.wide {
+    grid-column: span 2;
+}
+
+/* Badge for "New" or "Hot" */
+.badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: #ff3e3e;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 5px;
+    font-size: 0.7rem;
+    font-weight: bold;
+}
