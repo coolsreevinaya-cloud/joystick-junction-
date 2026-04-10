@@ -150,6 +150,26 @@
         <div class="game-card" style="background-image: url('moto.jpg');"></div>
         <div class="game-card" style="background-image: url('moto.jpg');"></div>
         <div class="game-card" style="background-image: url('moto.jpg');"></div>
-    </main>
+    async function loadGameGrid() {
+    const response = await fetch('games.json'); // Fetching your local "API"
+    const games = await response.json();
+    const grid = document.querySelector('.game-grid');
+
+    grid.innerHTML = ''; // Clear the grid
+
+    games.forEach(game => {
+        const card = document.createElement('a');
+        card.href = `play.html?gameUrl=${encodeURIComponent(game.url)}`;
+        card.className = `game-card ${game.size}`; // Adds 'large' or 'tall' classes
+        card.style.backgroundImage = `url('${game.thumb}')`;
+        
+        // Add a title tooltip
+        card.title = game.title;
+
+        grid.appendChild(card);
+    });
+}
+
+loadGameGrid();
 </body>
 </html>
