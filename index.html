@@ -150,6 +150,32 @@
         <div class="game-card" style="background-image: url('moto.jpg');"></div>
         <div class="game-card" style="background-image: url('moto.jpg');"></div>
         <div class="game-card" style="background-image: url('moto.jpg');"></div>
+    <main class="game-grid">
     </main>
+
+<script>
+    async function loadGameGrid() {
+        const grid = document.querySelector('.game-grid');
+        try {
+            const response = await fetch('games.json');
+            const games = await response.json();
+            
+            grid.innerHTML = ''; // This removes the empty gray boxes
+
+            games.forEach(game => {
+                const card = document.createElement('a');
+                // This creates the link to the player page
+                card.href = `play.html?gameUrl=${encodeURIComponent(game.url)}&title=${encodeURIComponent(game.title)}`;
+                card.className = `game-card ${game.size || 'normal'}`; 
+                card.style.backgroundImage = `url('${game.thumb}')`;
+                
+                grid.appendChild(card);
+            });
+        } catch (error) {
+            console.error("Could not load games.json. Make sure the file exists!", error);
+        }
+    }
+    loadGameGrid();
+</script>
 </body>
 </html>
